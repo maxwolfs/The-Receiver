@@ -1,16 +1,47 @@
 #include <MIDI.h>
+#include <elapsedMillis.h>
+
+elapsedMillis timeElapsed;
 
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+const int channel = 1;
+const int velocity = 100;
+int note1;
+int note2;
+int note3;
+int intvl;
+
+
 void setup()
 {
-    MIDI.begin(4);                      // Launch MIDI and listen to channel 4
+  MIDI.begin();
+}
+
+void noteRandomizer() {
+  note1 = random(30, 50);
+  note2 = note1 + 4;
+  note3 = note1 + 8;
+}
+
+void intvlRandomizer() {
+  intvl = random(100,200);
 }
 
 void loop()
 {
-        MIDI.sendNoteOn(42, 127, 1);    // Send a Note (pitch 42, velo 127 on channel 1)
-        delay(1000);                // Wait for a second
-        MIDI.sendNoteOff(42, 0, 1);     // Stop the note
-         delay(1000);                // Wait for a second
+  noteRandomizer();
+  intvlRandomizer();
+  if (timeElapsed >= intvl) {
+    timeElapsed = 0;
+    MIDI.sendNoteOn(note1, velocity, channel);
+    MIDI.sendNoteOn(note2, velocity, channel);
+    MIDI.sendNoteOn(note3, velocity, channel);
+  } else {
+    MIDI.sendNoteOff(note1, velocity, channel);
+    MIDI.sendNoteOff(note2, velocity, channel);
+    MIDI.sendNoteOff(note3, velocity, channel);
+  }
+
+  //MIDI.sendControlChange(123, 0, 1);
 }
