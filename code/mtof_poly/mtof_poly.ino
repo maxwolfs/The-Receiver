@@ -8,19 +8,24 @@
 elapsedMicros timeElapsed1;
 elapsedMicros timeElapsed2;
 elapsedMicros timeElapsed3;
-elapsedMicros timerArray[] = {&timeElapsed1,&timeElapsed2,&timeElapsed3};
+elapsedMicros timeElapsed4;
+/*elapsedMicros timeElapsed5;
+elapsedMicros timeElapsed6;
+elapsedMicros timeElapsed7;
+elapsedMicros timeElapsed8;*/
+elapsedMicros timerArray[] = {&timeElapsed1,&timeElapsed2,&timeElapsed3,&timeElapsed4};
 
 MIDI_CREATE_DEFAULT_INSTANCE();
 
-int solPin[] = {5, 8, 10}; // Solenoid Pins
-#define solCnt 3 // total of active Solenoids
+int solPin[] = {5, 8, 10, 4}; // Solenoid Pins
+#define solCnt 4 // total of active Solenoids
 
 int intvlArray[solCnt]; // array to save pitches
 byte rawPitch[solCnt];
 
 int counter = 0; // counter that increments per handleNoteOn
-boolean solState[] = {LOW, LOW, LOW};  // init state of Solenoids
-boolean isPlaying[] = {false, false, false}; // init state of Solenoids
+boolean solState[] = {LOW, LOW, LOW, LOW};  // init state of Solenoids
+boolean isPlaying[] = {false, false, false, false}; // init state of Solenoids
 byte pitch; //
 float midival;
 float intvl;
