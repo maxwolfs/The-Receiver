@@ -2,6 +2,10 @@
 
 * Maximilian Wolfs (c) 2018
 * mwolfs@hfk-bremen.de
+* Category: Semester project
+* Course Title: Sonic Theories, Sonic Art Practices: Unlimited
+* Lecturer: Petra Klusmeyer
+* Year: ST/WT 2017/2018
 
 ![Receiver-Totale-1](/images/totale-1.jpg)
 
